@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>GameZone — магазин цифровых игр для ПК</title>
+<style>
+:root{--bg:#0a0b14;--bg2:#10122a;--card:#161936;--tx:#e8eaff;--mu:#8e93bd;--b:#4f7cff;--p:#a855f7;--g:linear-gradient(135deg,#4f7cff,#a855f7);--ln:#262a52;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:120px;scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 500px at 85% -5%,#3b1d7a55,transparent),radial-gradient(700px 400px at 0 10%,#1b3b9c44,transparent),var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit;color:inherit}
+.w{max-width:1200px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#0a0b14e6;backdrop-filter:blur(14px);border-bottom:1px solid var(--ln)}
+.hd{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:wrap}
+.logo{font-weight:900;font-size:22px;letter-spacing:.5px;cursor:pointer}.logo b{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 24px #a855f7}
+.sr{flex:1;min-width:200px;position:relative}.sr input{width:100%;background:var(--bg2);border:1px solid var(--ln);border-radius:12px;padding:10px 14px 10px 38px;outline:0;transition:.2s}
+.sr input:focus{border-color:var(--b);box-shadow:0 0 0 3px #4f7cff33}.sr:before{content:"🔍";position:absolute;left:12px;top:9px;font-size:14px}
+.ic{display:flex;gap:8px;align-items:center}
+.ib{position:relative;background:var(--bg2);border:1px solid var(--ln);border-radius:12px;padding:9px 13px;cursor:pointer;transition:.2s;white-space:nowrap}
+.ib:hover{border-color:var(--p);box-shadow:0 0 16px #a855f755}
+.bd{position:absolute;top:-7px;right:-7px;background:var(--g);border-radius:99px;font-size:11px;min-width:20px;height:20px;display:grid;place-items:center;font-weight:700}
+nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+nav a{padding:6px 14px;border-radius:99px;color:var(--mu);white-space:nowrap;transition:.2s}nav a:hover,nav a.on{color:#fff;background:#4f7cff2a}
+.btn{background:var(--g);border:0;border-radius:12px;padding:12px 22px;font-weight:700;cursor:pointer;color:#fff;position:relative;overflow:hidden;transition:.25s;box-shadow:0 6px 24px #7c4dff55}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px #7c4dffaa}.btn:active{transform:scale(.97)}
+.btn.o{background:transparent;border:1px solid var(--b);box-shadow:none}.btn.o:hover{background:#4f7cff22}
+.btn:after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,#fff5,transparent);transform:skewX(-20deg);transition:.6s}.btn:hover:after{left:130%}
+#app.in{animation:up .45s ease}@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{position:relative;border-radius:22px;overflow:hidden;margin:20px 0;min-height:380px;display:flex;align-items:center;border:1px solid var(--ln);box-shadow:0 0 60px #7c4dff33}
+.hero .bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;filter:saturate(1.2);transform:scale(1.1);animation:zm 14s ease-in-out infinite alternate}@keyframes zm{to{transform:scale(1.2)}}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0a0b14 8%,#0a0b14aa 55%,#0a0b1422)}
+.hero .in2{position:relative;z-index:2;padding:34px;max-width:560px}
+.tag{display:inline-block;background:#a855f733;color:#d9b6ff;border:1px solid #a855f7;border-radius:99px;padding:3px 12px;font-size:12px;font-weight:700;letter-spacing:.5px}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.05;margin:12px 0;text-shadow:0 0 30px #4f7cff}
+.hero p{color:#c3c7ee}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
+h2{font-size:24px;margin:34px 0 14px;display:flex;align-items:center;gap:10px}h2:before{content:"";width:5px;height:24px;border-radius:3px;background:var(--g)}
+.flt{display:flex;gap:10px;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--ln);border-radius:16px;padding:12px}
+.flt select{flex:1;min-width:130px;background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:9px;outline:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;overflow:hidden;cursor:pointer;transition:.3s;position:relative;animation:up .5s both}
+.card:hover{transform:translateY(-6px);border-color:var(--p);box-shadow:0 12px 36px #7c4dff55}
+.card img{width:100%;aspect-ratio:3/3.6;object-fit:cover;display:block;transition:.4s}.card:hover img{transform:scale(1.06)}.card .im{overflow:hidden}
+.cb{padding:12px}.cb h3{margin:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mu{color:var(--mu);font-size:13px}
+.pr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}.pr b{font-size:17px}.pr s{color:var(--mu);font-size:13px}
+.ds{background:#22c55e;color:#04210f;font-weight:800;border-radius:7px;padding:2px 7px;font-size:13px}
+.fv{position:absolute;top:8px;right:8px;background:#0a0b14aa;border:0;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:16px;transition:.2s;backdrop-filter:blur(6px)}.fv:hover{transform:scale(1.2)}.fv.on{color:#ff4d79}
+.rt{color:#ffc857;font-weight:700}
+.gp{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:28px;margin-top:24px}
+.gp .cov{width:100%;border-radius:20px;box-shadow:0 0 50px #7c4dff55;border:1px solid var(--ln)}
+.gp h1{margin:6px 0;font-size:clamp(28px,5vw,44px)}
+.box{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:16px;margin-top:16px}
+table{width:100%;border-collapse:collapse}td{padding:7px 6px;border-bottom:1px solid var(--ln);vertical-align:top}td:first-child{color:var(--mu);width:34%}
+.rv{padding:12px 0;border-bottom:1px solid var(--ln)}.av{width:36px;height:36px;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;flex:none}
+.ci{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:12px;margin-bottom:12px;animation:up .4s both}
+.ci img{width:70px;height:84px;object-fit:cover;border-radius:10px}.ci .f{flex:1;min-width:0}
+.q{display:flex;align-items:center;gap:8px}.q button{width:30px;height:30px;border-radius:8px;border:1px solid var(--ln);background:var(--bg2);cursor:pointer}.q button:hover{border-color:var(--b)}
+.cl{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+.inp{width:100%;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:11px;outline:0;margin:6px 0}.inp:focus{border-color:var(--b)}
+.sm{display:flex;justify-content:space-between;padding:6px 0}.tot{font-size:22px;font-weight:800;border-top:1px solid var(--ln);margin-top:8px;padding-top:12px}
+.tabs{display:flex;gap:8px;margin:18px 0;overflow-x:auto}.tabs button{background:var(--bg2);border:1px solid var(--ln);border-radius:99px;padding:8px 18px;cursor:pointer;white-space:nowrap}.tabs .on{background:var(--g);border-color:transparent}
+.pf{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.pf .av{width:72px;height:72px;font-size:30px}
+.st{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}.st span{background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:6px 12px}
+.md{position:fixed;inset:0;background:#000a;backdrop-filter:blur(6px);z-index:50;display:none;place-items:center;padding:16px}.md.on{display:grid}
+.md>div{background:var(--bg2);border:1px solid var(--p);border-radius:20px;padding:24px;width:100%;max-width:400px;box-shadow:0 0 60px #7c4dff66;animation:up .3s}
+#ts{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;flex-direction:column;gap:8px}
+.t{background:var(--card);border:1px solid var(--b);border-left:4px solid var(--p);border-radius:12px;padding:12px 16px;box-shadow:0 8px 30px #000a;animation:ti .3s,to .4s 2.6s forwards}
+@keyframes ti{from{transform:translateX(60px);opacity:0}}@keyframes to{to{opacity:0;transform:translateX(60px)}}
+footer{border-top:1px solid var(--ln);margin-top:50px;padding:26px 0;color:var(--mu);text-align:center;font-size:13px}
+.em{text-align:center;padding:40px 10px;color:var(--mu)}
+@media(max-width:800px){.gp,.cl{grid-template-columns:1fr}.hero .in2{padding:22px}.hero:before{background:linear-gradient(0deg,#0a0b14 15%,#0a0b14aa 70%,#0a0b1455)}.hero{align-items:flex-end;min-height:420px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.ib span{display:none}}
+</style></head><body>
+<header><div class="w"><div class="hd"><div class="logo" onclick="location.hash='/'">GAME<b>ZONE</b></div>
+<div class="sr"><input id="q" placeholder="Поиск игр…" autocomplete="off"></div>
+<div class="ic"><button class="ib" onclick="location.hash='/account'" aria-label="Профиль">👤 <span id="un">Войти</span></button><button class="ib" onclick="location.hash='/cart'" aria-label="Корзина">🛒<i class="bd" id="cc">0</i></button></div></div>
+<nav id="nv"><a href="#/" data-r="">Главная</a><a href="#/" onclick="sc('pop')">Популярные</a><a href="#/" onclick="sc('new')">Новинки</a><a href="#/" onclick="sc('sale')">Скидки</a><a href="#/account" data-r="account">Кабинет</a></nav></div></header>
+<main class="w" id="app"></main>
+<footer><div class="w">© 2026 GameZone · Демонстрационный магазин · Все названия игр вымышлены</div></footer>
+<div class="md" id="md" onclick="if(event.target==this)closeA()"><div id="mb"></div></div><div id="ts"></div>
+<script>
+const $=s=>document.querySelector(s),ls=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let cart=ls('gz_cart',{}),fav=ls('gz_fav',[]),user=ls('gz_user',null),lib=ls('gz_lib',[]),orders=ls('gz_ord',[]),promo=null,F={q:'',g:'',pl:'',pr:0},tab='orders',amode='in';
+const R=[
+[1,'Neon Requiem','Экшен',4.8,2499,3299,'Windows',1,0,265,'Киберпанк-экшен в мегаполисе, где каждая вывеска — ловушка. Взламывайте системы, сражайтесь с корпорациями и выбирайте судьбу города.'],
+[2,'Void Frontier','Шутер',4.6,3299,0,'Windows, Linux',1,1,215,'Кооперативный космический шутер от первого лица. Исследуйте мёртвые станции, отбивайтесь от роя и собирайте экипаж мечты.'],
+[3,'Ashen Kingdom','RPG',4.9,2999,3999,'Windows, macOS',1,0,18,'Огромная фэнтези-RPG с нелинейным сюжетом. Восстановите павшее королевство или похороните его окончательно.'],
+[4,'Drift Syndicate','Гонки',4.4,1799,2499,'Windows',0,0,150,'Ночные уличные гонки, тюнинг и борьба за районы. 120 автомобилей и динамическая погода.'],
+[5,'Hollow Signal','Хоррор',4.7,1499,0,'Windows, Linux',1,0,285,'Психологический хоррор на заброшенной арктической станции. Радио знает ваше имя. Играйте в наушниках.'],
+[6,'Skyforge Tactics','Стратегия',4.5,1999,2699,'Windows, macOS, Linux',0,0,195,'Тактическая стратегия с пошаговыми боями на парящих островах. Стройте города и собирайте армии.'],
+[7,'Pixel Rogue','Инди',4.6,599,0,'Windows, macOS, Linux',0,1,320,'Яркий рогалик в пиксельной вселенной. Тысячи комбинаций оружия и безумные боссы каждый забег.'],
+[8,'Iron Tide','Шутер',4.3,2199,2999,'Windows',0,0,0,'Тактический шутер 5×5 с разрушаемым окружением и киберспортивным балансом.'],
+[9,'Crown of Embers','RPG',4.8,3499,0,'Windows',1,1,30,'Тёмное фэнтези с глубокой боевой системой и мрачным открытым миром. Каждый выбор оставляет шрам.'],
+[10,'Last Orbit','Приключения',4.5,1299,1899,'Windows, macOS',0,1,240,'Выживание на дрейфующей станции у чёрной дыры. Чините системы, исследуйте и ищите выход.'],
+[11,'Velocity Zero','Гонки',4.2,1599,0,'Windows, Linux',0,0,175,'Футуристические гонки на антигравитационных болидах со скоростью свыше 900 км/ч.'],
+[12,'Mythbound','Приключения',4.7,2299,2899,'Windows, macOS',0,1,45,'Красочное приключение по мотивам древних легенд. Загадки, спутники и музыка, от которой мурашки.']];
+const G=R.map(r=>({id:r[0],t:r[1],g:r[2],r:r[3],p:r[4],o:r[5],pl:r[6],pop:r[7],nw:r[8],h:r[9],d:r[10]}));
+const gm=id=>G.find(g=>g.id==id),rub=n=>Math.round(n).toLocaleString('ru-RU')+' ₽',dsc=g=>g.o?Math.round((1-g.p/g.o)*100):0,esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cv=g=>{const w=g.t.toUpperCase().split(' '),a=w[0],b=w.slice(1).join(' ');return'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${g.h},85%,48%)"/><stop offset="1" stop-color="hsl(${g.h+75},80%,14%)"/></linearGradient><radialGradient id="s"><stop offset="0" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="400" height="480" fill="url(#a)"/><circle cx="${120+g.id*17%200}" cy="140" r="110" fill="url(#s)" opacity=".35"/><circle cx="290" cy="120" r="55" fill="hsl(${g.h+40},95%,65%)" opacity=".5"/><path d="M0 360 L90 250 L160 320 L250 210 L330 300 L400 230V480H0Z" fill="#0a0b14" opacity=".6"/><path d="M0 410 L120 330 L210 390 L320 310 L400 370V480H0Z" fill="#0a0b14" opacity=".8"/><text x="22" y="410" font-family="Arial Black,Impact,sans-serif" font-size="40" fill="#fff">${a}</text><text x="22" y="448" font-family="Arial Black,Impact,sans-serif" font-size="${b.length>8?26:34}" fill="#c9b8ff">${b}</text></svg>`)};
+const toast=m=>{const e=document.createElement('div');e.className='t';e.textContent=m;$('#ts').append(e);setTimeout(()=>e.remove(),3100)};
+const save=()=>{sv('gz_cart',cart);sv('gz_fav',fav);sv('gz_user',user);sv('gz_lib',lib);sv('gz_ord',orders)};
+const cnt=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+function upd(){$('#cc').textContent=cnt();$('#un').textContent=user?user.name.split(' ')[0]:'Войти'}
+const price=g=>`<div class="pr"><b>${rub(g.p)}</b>${g.o?`<s>${rub(g.o)}</s><span class="ds">-${dsc(g)}%</span>`:''}</div>`;
+const card=(g,i=0)=>`<article class="card" style="animation-delay:${i*50}ms" onclick="location.hash='/game/${g.id}'"><button class="fv ${fav.includes(g.id)?'on':''}" data-f="${g.id}" onclick="event.stopPropagation();tf(${g.id})" aria-label="В избранное">${fav.includes(g.id)?'♥':'♡'}</button><div class="im"><img loading="lazy" src="${cv(g)}" alt="${g.t}"></div><div class="cb"><h3>${g.t}</h3><div class="mu">${g.g} · <span class="rt">★ ${g.r}</span></div>${price(g)}</div></article>`;
+const grid=l=>l.length?`<div class="grid">${l.map(card).join('')}</div>`:`<div class="em">😕 Ничего не найдено. Попробуйте изменить фильтры.</div>`;
+function tf(id){const i=fav.indexOf(id);i<0?(fav.push(id),toast('Добавлено в избранное ♥')):(fav.splice(i,1),toast('Удалено из избранного'));save();document.querySelectorAll(`[data-f="${id}"]`).forEach(b=>{const on=fav.includes(id);b.classList.toggle('on',on);if(b.classList.contains('fv'))b.textContent=on?'♥':'♡';else b.textContent=on?'♥ В избранном':'♡ В избранное'})}
+function add(id){cart[id]=(cart[id]||0)+1;save();upd();toast(`«${gm(id).t}» добавлена в корзину`)}
+function buy(id){if(!cart[id])add(id);location.hash='/cart'}
+const flt=()=>G.filter(g=>(!F.q||g.t.toLowerCase().includes(F.q.toLowerCase()))&&(!F.g||g.g==F.g)&&(!F.pl||g.pl.includes(F.pl))&&(!F.pr||g.p<=F.pr));
+const sc=id=>setTimeout(()=>{const e=document.getElementById(id);e&&e.scrollIntoView({behavior:'smooth'})},120);
+function secs(){const on=F.q||F.g||F.pl||F.pr;$('#sec').innerHTML=on?`<h2>Результаты (${flt().length})</h2>${grid(flt())}`:`<h2 id="pop">Популярные игры</h2>${grid(G.filter(g=>g.pop))}<h2 id="new">Новинки</h2>${grid(G.filter(g=>g.nw))}<h2 id="sale">Скидки</h2>${grid(G.filter(g=>g.o).sort((a,b)=>dsc(b)-dsc(a)).slice(0,8))}`}
+function pgHome(){const h=gm(1),opt=(a,v)=>a.map(x=>`<option value="${x}" ${v==x?'selected':''}>${x}</option>`).join('');
+$('#app').innerHTML=`<section class="hero"><div class="bg" style="background-image:url('${cv(h)}')"></div><div class="in2"><span class="tag">🔥 ИГРА НЕДЕЛИ · -${dsc(h)}%</span><h1>${h.t}</h1><p>${h.d}</p>${price(h)}<div class="row"><button class="btn" onclick="buy(1)">Купить сейчас</button><button class="btn o" onclick="location.hash='/game/1'">Подробнее</button></div></div></section>
+<div class="flt"><select id="fg"><option value="">Все жанры</option>${opt(['Экшен','RPG','Шутер','Стратегия','Гонки','Хоррор','Инди','Приключения'],F.g)}</select><select id="fp"><option value="">Все платформы</option>${opt(['Windows','macOS','Linux'],F.pl)}</select><select id="fr"><option value="0">Любая цена</option>${[1000,2000,3000].map(v=>`<option value="${v}" ${F.pr==v?'selected':''}>до ${rub(v)}</option>`).join('')}</select><button class="btn o" onclick="F={q:'',g:'',pl:'',pr:0};$('#q').value='';pgHome()">Сбросить</button></div><div id="sec"></div>`;
+$('#fg').onchange=e=>{F.g=e.target.value;secs()};$('#fp').onchange=e=>{F.pl=e.target.value;secs()};$('#fr').onchange=e=>{F.pr=+e.target.value;secs()};secs()}
+const RV=[['Алексей К.',5,'Невероятная атмосфера и графика. Оптимизация на высоте, ни одного вылета за 40 часов.'],['Мария В.',5,'Лучшая игра года для меня. Сюжет затягивает, саундтрек — отдельный восторг.'],['Дмитрий С.',4,'Отличная игра, но хотелось бы побольше контента после финала. Своих денег стоит.'],['Ирина П.',5,'Играем с друзьями каждый вечер. Кооператив сделан замечательно!'],['Никита Б.',4,'Сильная механика, красивый мир. Пара мелких багов, но разработчики быстро чинят.'],['Олег Т.',3,'Хорошо, но дороговато без скидки. На распродаже брать однозначно.']];
+function pgGame(id){const g=gm(id);if(!g)return pgHome();const rv=[0,1,2].map(i=>RV[(id+i*2)%6]),sim=G.filter(x=>x.id!=id&&(x.g==g.g||x.h%3==g.h%3)).slice(0,4),own=lib.includes(id),n=30+id*6;
+$('#app').innerHTML=`<div class="gp"><div><img class="cov" src="${cv(g)}" alt="${g.t}"></div><div><span class="tag">${g.g}</span><h1>${g.t}</h1><div class="mu"><span class="rt">★ ${g.r}</span> · ${g.pl} · ${rv.length*37+id*11} отзывов</div><p>${g.d}</p>
+<div class="box"><div class="pr" style="margin:0"><b style="font-size:30px">${rub(g.p)}</b>${g.o?`<s style="font-size:17px">${rub(g.o)}</s><span class="ds" style="font-size:16px">-${dsc(g)}%</span>`:''}</div><div class="row">${own?'<button class="btn" disabled style="opacity:.6">✓ В библиотеке</button>':`<button class="btn" onclick="buy(${id})">Купить</button><button class="btn o" onclick="add(${id})">В корзину</button>`}<button class="btn o" data-f="${id}" onclick="tf(${id})">${fav.includes(id)?'♥ В избранном':'♡ В избранное'}</button></div></div>
+<div class="box"><h3 style="margin:0 0 6px">Системные требования</h3><table><tr><td>Платформа</td><td>${g.pl}</td></tr><tr><td>Минимальные</td><td>Windows 10 64-bit, Intel Core i5-8400 / Ryzen 5 2600, 8 ГБ ОЗУ, GTX 1060 6 ГБ, ${n} ГБ на диске</td></tr><tr><td>Рекомендуемые</td><td>Windows 11, Intel Core i7-10700 / Ryzen 7 3700X, 16 ГБ ОЗУ, RTX 3060, SSD, ${n+10} ГБ</td></tr></table></div></div></div>
+<h2>Отзывы покупателей</h2><div class="box" style="margin-top:0">${rv.map(r=>`<div class="rv"><div style="display:flex;gap:10px;align-items:center"><div class="av">${r[0][0]}</div><div><b>${r[0]}</b><div class="rt">${'★'.repeat(r[1])}${'☆'.repeat(5-r[1])}</div></div></div><p style="margin:8px 0 0;color:#c3c7ee">${r[2]}</p></div>`).join('')}</div><h2>Похожие игры</h2>${grid(sim)}`}
+function pgCart(){const ids=Object.keys(cart);if(!ids.length){$('#app').innerHTML=`<div class="em"><div style="font-size:60px">🛒</div><h2 style="justify-content:center">Корзина пуста</h2><button class="btn" onclick="location.hash='/'">Перейти в каталог</button></div>`;return}
+const sub=ids.reduce((s,i)=>s+gm(i).p*cart[i],0),pc=promo?promo.v:0,d=sub*pc/100;
+$('#app').innerHTML=`<h2>Корзина</h2><div class="cl"><div>${ids.map(i=>{const g=gm(i);return`<div class="ci"><img src="${cv(g)}" alt=""><div class="f"><b style="cursor:pointer" onclick="location.hash='/game/${i}'">${g.t}</b><div class="mu">${g.g} · ${g.pl}</div>${price(g)}</div><div class="q"><button onclick="qt(${i},-1)">−</button><b>${cart[i]}</b><button onclick="qt(${i},1)">+</button></div><button class="q" style="all:unset;cursor:pointer;font-size:20px" onclick="qt(${i},-99)" aria-label="Удалить">🗑</button></div>`}).join('')}</div>
+<div class="box" style="margin:0"><h3 style="margin:0">Ваш заказ</h3><div class="sm"><span>Товаров: ${cnt()}</span><span>${rub(sub)}</span></div>${promo?`<div class="sm" style="color:#22c55e"><span>Промокод ${promo.c} (-${pc}%)</span><span>−${rub(d)}</span></div>`:''}<div style="display:flex;gap:8px"><input class="inp" id="pc" placeholder="Промокод (GAME10, ZONE20)" value="${promo?promo.c:''}"><button class="btn o" style="margin:6px 0;padding:8px 14px" onclick="ap()">ОК</button></div><div class="sm tot"><span>Итого</span><span>${rub(sub-d)}</span></div><button class="btn" style="width:100%;margin-top:12px" onclick="co()">Оформить заказ</button></div></div>`}
+function qt(i,n){cart[i]+=n;if(cart[i]<=0)delete cart[i];save();upd();pgCart()}
+function ap(){const c=$('#pc').value.trim().toUpperCase(),P={GAME10:10,ZONE20:20};if(P[c]){promo={c,v:P[c]};toast(`Промокод применён: -${P[c]}%`)}else{promo=null;toast('Промокод не найден')}pgCart()}
+function co(){if(!user){toast('Войдите, чтобы оформить заказ');return openA('in')}
+const ids=Object.keys(cart).map(Number),sub=ids.reduce((s,i)=>s+gm(i).p*cart[i],0),tot=sub*(1-(promo?promo.v:0)/100);
+orders.unshift({n:1000+orders.length*7+Math.floor(Math.random()*6)+1,dt:new Date().toLocaleDateString('ru-RU'),it:ids,tot});ids.forEach(i=>{if(!lib.includes(i))lib.push(i)});cart={};promo=null;save();upd();toast('🎉 Заказ оплачен! Игры добавлены в библиотеку');tab='lib';location.hash='/account'}
+function pgAcct(){if(!user){$('#app').innerHTML=`<div class="em"><div style="font-size:60px">🎮</div><h2 style="justify-content:center">Добро пожаловать в GameZone</h2><p>Войдите, чтобы видеть покупки и избранное.</p><button class="btn" onclick="openA('in')">Войти</button> <button class="btn o" onclick="openA('up')">Регистрация</button></div>`;return}
+const T={orders:'История покупок',lib:'Мои игры',fav:'Избранное'};let c='';
+if(tab=='orders')c=orders.length?orders.map(o=>`<div class="box"><div class="sm"><b>Заказ №${o.n}</b><span class="mu">${o.dt}</span></div><div class="mu">${o.it.map(i=>gm(i).t).join(', ')}</div><div class="sm"><span>Оплачено</span><b>${rub(o.tot)}</b></div></div>`).join(''):'<div class="em">Покупок пока нет.</div>';
+if(tab=='lib')c=lib.length?`<div class="grid">${lib.map(i=>gm(i)).map(g=>`<div class="card"><div class="im"><img src="${cv(g)}" alt=""></div><div class="cb"><h3>${g.t}</h3><button class="btn" style="width:100%;margin-top:8px;padding:8px" onclick="toast('Запуск «${g.t}»…')">▶ Играть</button></div></div>`).join('')}</div>`:'<div class="em">Библиотека пуста.</div>';
+if(tab=='fav')c=fav.length?grid(fav.map(gm)):'<div class="em">В избранном пока ничего нет.</div>';
+$('#app').innerHTML=`<div class="box pf"><div class="av">${esc(user.name[0].toUpperCase())}</div><div style="flex:1"><h2 style="margin:0">${esc(user.name)}</h2><div class="mu">${esc(user.email)}</div><div class="st"><span>🎮 Игр: ${lib.length}</span><span>♥ Избранное: ${fav.length}</span><span>🧾 Заказов: ${orders.length}</span></div></div><button class="btn o" onclick="out()">Выйти</button></div><div class="tabs">${Object.keys(T).map(k=>`<button class="${tab==k?'on':''}" onclick="tab='${k}';pgAcct()">${T[k]}</button>`).join('')}</div>${c}`}
+const hs=s=>{let h=5381;for(const c of s)h=(h*33^c.charCodeAt(0))>>>0;return h.toString(36)};
+function openA(m){amode=m;const up=m=='up';$('#mb').innerHTML=`<h2 style="margin:0 0 6px">${up?'Регистрация':'Вход'}</h2><div class="tabs" style="margin:8px 0"><button class="${up?'':'on'}" onclick="openA('in')">Вход</button><button class="${up?'on':''}" onclick="openA('up')">Регистрация</button></div>${up?'<input class="inp" id="an" placeholder="Имя">':''}<input class="inp" id="ae" type="email" placeholder="Email"><input class="inp" id="ap" type="password" placeholder="Пароль (мин. 6 символов)"><button class="btn" style="width:100%;margin-top:8px" onclick="doA()">${up?'Создать аккаунт':'Войти'}</button><p class="mu" style="text-align:center;margin:10px 0 0">Демо: данные хранятся только в вашем браузере</p>`;$('#md').classList.add('on')}
+const closeA=()=>$('#md').classList.remove('on');
+function doA(){const e=$('#ae').value.trim().toLowerCase(),p=$('#ap').value,n=amode=='up'?$('#an').value.trim():'',U=ls('gz_users',[]);
+if(!/^\S+@\S+\.\S+$/.test(e))return toast('Введите корректный email');if(p.length<6)return toast('Пароль — минимум 6 символов');
+if(amode=='up'){if(!n)return toast('Введите имя');if(U.some(u=>u.e==e))return toast('Этот email уже зарегистрирован');U.push({n,e,h:hs(p)});sv('gz_users',U);user={name:n,email:e}}
+else{const u=U.find(u=>u.e==e&&u.h==hs(p));if(!u)return toast('Неверный email или пароль');user={name:u.n,email:e}}
+save();upd();closeA();toast(`Добро пожаловать, ${user.name}! 👋`);route()}
+function out(){user=null;save();upd();toast('Вы вышли из аккаунта');route()}
+function route(){const[,p,id]=location.hash.split('/'),m=$('#app');m.className='';void m.offsetWidth;m.className='in';
+({game:()=>pgGame(+id),cart:pgCart,account:pgAcct}[p]||pgHome)();scrollTo(0,0);document.querySelectorAll('#nv a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r==(p||'')))}
+$('#q').oninput=e=>{F.q=e.target.value;if(/^#\/(game|cart|account)/.test(location.hash)){location.hash='/'}else if($('#sec'))secs();else route()};
+addEventListener('hashchange',route);addEventListener('keydown',e=>e.key=='Escape'&&closeA());upd();route();
+</script></body></html>
